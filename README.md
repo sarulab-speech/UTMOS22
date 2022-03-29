@@ -7,7 +7,7 @@ We present the UTokyo-SaruLab mean opinion score (MOS) prediction system submitt
 In the Challenge, our system had the highest score on several metrics for both the main and OOD tracks. In addition, we conducted ablation studies to investigate the effectiveness of our proposed methods.
 
 
-Demo for UTMOS is available: [![Hugging Face Spaces](https://huggingface.co/spaces/sarulab-speech/UTMOS-demo)]
+Demo for UTMOS is available: [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/akhaliq/JoJoGAN)
 
 ## How to use
 
