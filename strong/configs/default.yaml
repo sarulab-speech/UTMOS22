@@ -1,0 +1,8 @@
+defaults:
+  - dataset: default
+  - model: default
+  - train: default
+
+debug: False
+deepspeed: False
+outfile: answer.csv

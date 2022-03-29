@@ -1,0 +1,45 @@
+# @package _group_ 
+seed: 1234
+model_selection_metric: val_SRCC_system_main
+train_batch_size: 12
+val_batch_size: 1
+test_batch_size: 1
+out_dir: train_output/
+trainer_args:
+  max_steps: 15_000
+  gpus: [0]
+  deterministic: True
+  auto_select_gpus: False
+  benchmark: True
+  precision: 32
+  gradient_clip_val: 1.0
+  flush_logs_every_n_steps: 10
+  val_check_interval: 0.5
+  accumulate_grad_batches: 2
+  # strategy: ddp
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 2e-5
+scheduler:
+  _target_: transformers.get_linear_schedule_with_warmup
+  num_warmup_steps: 4000
+  num_training_steps: 15_000
+early_stopping:
+  patience: 100
+
+criterion: 
+  _target_: loss_function.CombineLosses
+  loss_weights:
+    - 1.0
+    - 0.5
+  loss_instances:
+    -
+      _target_: loss_function.ClippedMSELoss
+      criterion:
+        _target_: torch.nn.MSELoss
+        reduction: 'none'
+      tau: 0.25
+      mode: 'frame'
+    -
+      _target_: loss_function.ContrastiveLoss
+      margin: 0.1

@@ -1,0 +1,9 @@
+defaults:
+  - dataset: cv
+  - model: default
+  - train: default
+
+batch_size_and_model: "wav2vec2-base-4"
+debug: False
+deepspeed: False
+outfile: answer.csv

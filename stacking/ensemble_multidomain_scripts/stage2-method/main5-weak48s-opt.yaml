@@ -1,0 +1,29 @@
+
+strong_learners: 
+  - breezy-sun-26
+  - fancy-surf-27
+  - polar-flower-28
+  - likely-leaf-29
+  - cosmic-water-30
+weak_learners:
+  datatracks:
+    - phase1-main
+    - students-wo_test
+    - phase1-ood
+  model_types:
+    - ridge
+    - linear_svr
+    - kernel_svr
+    - lightgbm
+    - rf
+    - exactgp
+  ssl_types:
+    - w2v_small
+    - w2v_large
+    - w2v_large2
+    - w2v_xlsr
+    - hubert_base
+    - hubert_large
+    - wavlm_base
+    - wavlm_large
+

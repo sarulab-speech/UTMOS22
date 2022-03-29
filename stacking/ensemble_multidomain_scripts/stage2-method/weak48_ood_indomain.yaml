@@ -1,0 +1,22 @@
+
+strong_learners: []
+weak_learners:
+  datatracks:
+    - phase1-ood
+  model_types:
+    - ridge
+    - linear_svr
+    - kernel_svr
+    - lightgbm
+    - rf
+    - svgp
+  ssl_types:
+    - w2v_small
+    - w2v_large
+    - w2v_large2
+    - w2v_xlsr
+    - hubert_base
+    - hubert_large
+    - wavlm_base
+    - wavlm_large
+

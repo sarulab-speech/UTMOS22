@@ -1,0 +1,53 @@
+# @package _group_
+data_dir: data/phase1-main/DATA
+data_sources: 
+  -
+    name: "main"
+    train_mos_list_path: data/phase1-main/DATA/sets/TRAINSET
+    val_mos_list_path: data/phase1-main/DATA/sets/DEVSET
+    test_mos_list_path: data/phase1-main/DATA/sets/test.scp
+    test_post_mos_list_path: data/phase1-main/DATA/sets/TESTSET
+    wav_dir: data/phase1-main/DATA/wav/
+    data_dir: data/phase1-main/DATA
+    outfile: answer-main.csv
+  -
+    name: "ood"
+    train_mos_list_path: data/phase1-ood/DATA/sets/TRAINSET
+    val_mos_list_path: data/phase1-ood/DATA/sets/DEVSET
+    test_mos_list_path: data/phase1-ood/DATA/sets/test.scp
+    test_post_mos_list_path: data/phase1-ood/DATA/sets/TESTSET
+    wav_dir: data/phase1-ood/DATA/wav/
+    data_dir: data/phase1-ood/DATA
+    outfile: answer-ood.csv
+  -
+    name: "lancers"
+    train_mos_list_path: TRAINSET_xin.txt
+    wav_dir: data/phase1-ood/DATA/wav/
+    data_dir: data/phase1-ood/DATA
+use_data:
+  main: True
+  ood: True
+  lancers: True
+datamodule: 
+  _target_: dataset.DataModule
+only_mean: False
+additional_datas:
+  - 
+    _target_: dataset.PhonemeData
+    transcription_file_path: 'transcriptions_clustered.csv'
+    with_reference: True
+  -
+    _target_: dataset.NormalizeScore
+    org_max: 5.0
+    org_min: 1.0
+    normalize_to_max: 1.0
+    normalize_to_min: -1.0
+  -
+    _target_:  dataset.AugmentWav
+    pitch_shift_minmax:
+      min: -300
+      max: 300
+    random_time_warp_f: 1.0
+  -
+    _target_:  dataset.SliceWav
+    max_wav_seconds: 10

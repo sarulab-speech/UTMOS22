@@ -1,0 +1,78 @@
+defaults:
+  - dataset: default
+  - model: default
+  - train: default
+  - override hydra/sweeper: optuna
+
+hydra:
+  sweeper:
+    n_trials: 100
+    direction: maximize
+    storage: ???
+    study_name: sslmos_listener_ld_contrastive_abci
+    n_jobs: 1
+    search_space:
+      train.criterion.loss_weights.1:
+        type: float
+        low: 0.0
+        high: 2.0
+        step: 0.1
+      train.criterion.loss_instances.1.margin:
+        type: float
+        low: 0.0
+        high: 0.5
+        step: 0.1
+      train.criterion.loss_instances.0.tau:
+        type: categorical
+        choices:
+        - 0.1
+        - 0.25
+      train.criterion.loss_instances.0.mode:
+        type: categorical
+        choices:
+        - 'frame'
+      dataset.additional_datas.2.pitch_shift_minmax.min:
+        type: categorical
+        choices:
+        - 0
+        - -100
+        - -200
+        - -300
+      dataset.additional_datas.2.pitch_shift_minmax.max:
+        type: categorical
+        choices:
+        - 0
+        - 100
+        - 200
+        - 300
+      dataset.additional_datas.2.random_time_warp_f:
+        type: float
+        low: 1
+        high: 3
+        step: 0.5
+      dataset.use_data.ood:
+        type: categorical
+        choices:
+        - True
+        - False
+      dataset.use_data.lancers:
+        type: categorical
+        choices:
+        - True
+        - False
+      dataset.only_mean:
+        type: categorical
+        choices:
+        - True
+        - False
+      batch_size_and_model:
+        type: categorical
+        choices:
+        - "wav2vec2-base-4"
+        - "wav2vec2-base-8"
+        - "wav2vec2-base-16"
+        - "wavlm-large-4"
+batch_size_and_model: "wav2vec2-base-4"
+tuning_target: ???
+debug: False
+outfile: answer.csv

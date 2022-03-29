@@ -1,0 +1,30 @@
+
+strong_learners: 
+  - pretty-sound-7
+  - rural-river-8
+  - fancy-music-9
+  - golden-monkey-10
+  - peachy-valley-11
+  - spring-lake-12
+weak_learners:
+  datatracks:
+    - phase1-main
+    - students-wo_test
+    - phase1-ood
+  model_types:
+    - ridge
+    - linear_svr
+    - kernel_svr
+    - lightgbm
+    - rf
+    - exactgp
+  ssl_types:
+    - w2v_small
+    - w2v_large
+    - w2v_large2
+    - w2v_xlsr
+    - hubert_base
+    - hubert_large
+    - wavlm_base
+    - wavlm_large
+

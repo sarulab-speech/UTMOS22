@@ -1,0 +1,27 @@
+# @package _group_
+lightning_module: 
+  _target_: lightning_module.BaselineLightningModule
+WavLM: False
+
+feature_extractors:
+  -
+    _target_: model.load_ssl_model
+    cp_path: fairseq/wav2vec_small.pt
+
+  -
+    _target_: model.DomainEmbedding
+    n_domains: 3
+    domain_dim: 128
+
+output_layers:
+  -
+    _target_: model.LDConditioner
+    judge_dim: 128
+    num_judges: 3000
+  -
+   _target_: model.Projection
+   hidden_dim: 2048
+   activation:
+    _target_: torch.nn.ReLU
+   range_clipping: False
+
