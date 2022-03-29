@@ -13,4 +13,4 @@ Demo for UTMOS is available: [![Hugging Face Spaces](https://img.shields.io/badg
 
 Our system predicts MOS with small errors by stacking of strong and weak learners.  
 - To run training and inference with <u>a single strong learner</u>, see [strong/README.md](strong/README.md).  
-- To run <u>stacking</u>, see [stacking/README.md](stacking/ensemble_multidomain_scripts/README.md).
+- To run <u>stacking</u>, see [stacking/ensemble_multidomain_scripts/README.md](stacking/ensemble_multidomain_scripts/README.md).

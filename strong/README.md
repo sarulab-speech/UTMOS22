@@ -1,35 +1,43 @@
-# prerequesities
+# UTMOS Strong Learner
+
+Training and inference scripts for the UTMOS strong learner.
+
+## Prerequesities
 
 * poetry
 * [WavAugment](https://github.com/facebookresearch/WavAugment)
 
-# setup
-1. download ssl model file from fairseq webpage
-1. run the commands below
-```
+## Setup
+1. Download SSL model checkpoints from [fairseq repo](https://github.com/pytorch/fairseq).
+1. Run the following commands.
+```shell
 cd path/to/this/repository
 git submodule update --init
 poetry install
 ln -s path/to/dataset/ data/
 ```
 
-# transcribing speech
-```
+## Preprocessing
+When using phoneme encoding, you need to transcribe speech for preprocessing with the following command.
+```shell
 python transcribe_speech.py
 ```
 
-# training
+## Training
 
-main_track
-```
+To train the strong learner, run the following commands for each of the tracks.
+
+Main track
+```shell
 python train.py dataset.data_dir=data/phase1-main/DATA
 ```
-ood_track
-```
+OOD track
+```shell
 python train.py dataset.data_dir=data/phase1-ood/DATA
 ```
 
-# finetuning from ckpt
-```
-python train.py dataset.data_dir=same_as_above train.finetuned_checkpoint=path_to_pt_file
+## Prediction 
+To predict scores with the trained strong learner, run the following command.
+```shell
+python predict.py +ckpt_path=outputs/${date}/${time}/train_outputs/hoge.ckpt
 ```
