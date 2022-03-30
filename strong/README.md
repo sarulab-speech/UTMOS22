@@ -13,6 +13,7 @@ Training and inference scripts for the UTMOS strong learner.
 ```shell
 cd path/to/this/repository
 poetry install
+cd strong/
 ln -s path/to/dataset/ data/
 ```
 
@@ -20,6 +21,7 @@ ln -s path/to/dataset/ data/
 The phoeneme transcription is alreday present in this repository.
 You can also perform the transcribe by your own!
 ```shell
+cd strong/
 python transcribe_speech.py
 ```
 
@@ -29,11 +31,13 @@ To train the strong learner, run the following commands for each of the tracks.
 
 Main track
 ```shell
+cd strong/
 python train.py 
 ```
 OOD track
 ```shell
-python train.py train.mode_selection_metric=val_SRCC_system_main
+cd strong/
+python train.py train.model_selection_metric=val_SRCC_system_main
 ```
 
 ## Prediction 
