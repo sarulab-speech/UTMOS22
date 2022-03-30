@@ -12,13 +12,13 @@ Training and inference scripts for the UTMOS strong learner.
 1. Run the following commands.
 ```shell
 cd path/to/this/repository
-git submodule update --init
 poetry install
 ln -s path/to/dataset/ data/
 ```
 
 ## Preprocessing
-When using phoneme encoding, you need to transcribe speech for preprocessing with the following command.
+The phoeneme transcription is alreday present in this repository.
+You can also perform the transcribe by your own!
 ```shell
 python transcribe_speech.py
 ```
@@ -29,11 +29,11 @@ To train the strong learner, run the following commands for each of the tracks.
 
 Main track
 ```shell
-python train.py dataset.data_dir=data/phase1-main/DATA
+python train.py 
 ```
 OOD track
 ```shell
-python train.py dataset.data_dir=data/phase1-ood/DATA
+python train.py train.mode_selection_metric=val_SRCC_system_main
 ```
 
 ## Prediction 

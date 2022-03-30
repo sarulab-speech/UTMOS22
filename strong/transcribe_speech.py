@@ -37,8 +37,9 @@ if __name__ == '__main__':
     processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-lv-60-espeak-cv-ft")
     model = Wav2Vec2ForCTC.from_pretrained("facebook/wav2vec2-lv-60-espeak-cv-ft")
     from tqdm import tqdm
-    _ = model.to('cpu')
+    _ = model.to('cuda')
     batch_size = 1
+    all_df = pd.DataFrame()
     def collate_fn(batch):
         import numpy as np
         wav_name = batch[0]['audio']['path']
@@ -62,7 +63,7 @@ if __name__ == '__main__':
 
                 # retrieve logits
                 with torch.no_grad():
-                    logits = model(data.to('cpu')).logits
+                    logits = model(data.to('cuda')).logits
 
                 # take argmax and decode
                 predicted_ids = torch.argmax(logits, dim=-1)
@@ -73,6 +74,14 @@ if __name__ == '__main__':
         import pandas as pd
         df = pd.DataFrame({"wav_name": wav_names, "transcription": transcriptions})
         df['wav_name'] = df['wav_name'].apply(lambda x: x.split("/")[-1])
-        df = cluster_transcriptions(df)
-        df.to_csv('transcriptions_{}.csv'.format(track), index=False)
+        df['track'] = track if track != 'unlabeled' else 'ood'
+        all_df = pd.concat([all_df, df],ignore_index=True)
+    result = pd.concat(
+        [
+            cluster_transcriptions(all_df[all_df['track'] == 'main'].copy()),
+            cluster_transcriptions(all_df[all_df['track'] == 'ood'].copy()),
+        ],
+        ignore_index=True
+    )
+    result.to_csv('transcriptions_clustered.csv'.format(track), index=False)
     

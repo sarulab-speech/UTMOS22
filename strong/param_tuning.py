@@ -9,7 +9,7 @@ import hydra
 from dataset import DataModule
 import wandb
 
-@hydra.main(config_path="configs",config_name='optuna-ood')
+@hydra.main(config_path="configs",config_name='optuna-main')
 def train(cfg):
     debug = cfg.debug
 
@@ -31,10 +31,19 @@ def train(cfg):
     print(cfg.batch_size_and_model)
     print(cfg.model.feature_extractors[0]["cp_path"])
     print(cfg.train.train_batch_size)
+    
+    if cfg.dataset.use_data.main:
+        cfg.dataset.data_sources.pop(0)
+    if cfg.dataset.use_data.ood:
+        cfg.dataset.data_sources.pop(1)
+    if cfg.dataset.use_data.external:
+        cfg.dataset.data_sources.pop(2)
 
-    csvlogger = CSVLogger(save_dir=cfg.train.out_dir, name="train_log")
-    tblogger = TensorBoardLogger(save_dir=cfg.train.out_dir, name="tf_log")
-    wandblogger = WandbLogger(project="voiceMOS2022-optuna-ood",entity='sarulab-voicemos',settings=wandb.Settings(start_method="fork"))
+    loggers = []
+    loggers.append(CSVLogger(save_dir=cfg.train.out_dir, name="train_log"))
+    loggers.append(TensorBoardLogger(save_dir=cfg.train.out_dir, name="tf_log"))
+    if cfg.train.use_wandb:
+        loggers.append(WandbLogger(project="voicemos",offline=debug))
 
     checkpoint_callback = ModelCheckpoint(
         dirpath=cfg.train.out_dir,
@@ -42,7 +51,7 @@ def train(cfg):
         save_top_k=1,
         save_last=False,
         every_n_epochs=1,
-        monitor="val_SRCC_system_ood",
+        monitor=cfg.train.model_selection_metric,
         mode='max'
     )
     lr_monitor = LearningRateMonitor(logging_interval='step')
@@ -58,7 +67,7 @@ def train(cfg):
         limit_train_batches=0.01 if debug else 1.0,
         limit_val_batches=0.5 if debug else 1.0,
         callbacks=callbacks,
-        logger=[csvlogger, tblogger, wandblogger],
+        logger=loggers,
     )
 
     lightning_module = hydra.utils.instantiate(cfg.model.lightning_module,cfg=cfg , _recursive_=False)    
