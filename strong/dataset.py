@@ -32,7 +32,7 @@ class DataModule(pl.LightningDataModule):
         for datasource in data_sources:
             self.wavdir[datasource.name] = join(ocwd, datasource['wav_dir'])  
         for idx, datasource in enumerate(data_sources):
-            if not self.cfg.dataset.use_data.lancers and datasource['name'] == 'lancers':
+            if not self.cfg.dataset.use_data.external and datasource['name'] == 'external':
                 data_sources.pop(idx)
         for idx, datasource in enumerate(data_sources):
             if not self.cfg.dataset.use_data.main and datasource['name'] == 'main':
@@ -135,7 +135,7 @@ class TestDataModule(DataModule):
         for datasource in data_sources:
             self.wavdir[datasource.name] = join(ocwd, datasource['wav_dir'])  
         for idx, datasource in enumerate(data_sources):
-            if not self.cfg.dataset.use_data.lancers and datasource['name'] == 'lancers':
+            if not self.cfg.dataset.use_data.external and datasource['name'] == 'external':
                 data_sources.pop(idx)
         for idx, datasource in enumerate(data_sources):
             if not self.cfg.dataset.use_data.main and datasource['name'] == 'main':

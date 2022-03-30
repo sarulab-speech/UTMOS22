@@ -25,7 +25,7 @@ data_sources:
 use_data:
   main: True
   ood: True
-  lancers: True
+  external: True
 datamodule: 
   _target_: dataset.DataModule
 only_mean: False

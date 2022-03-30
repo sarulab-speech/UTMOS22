@@ -55,7 +55,7 @@ hydra:
         choices:
         - True
         - False
-      dataset.use_data.lancers:
+      dataset.use_data.external:
         type: categorical
         choices:
         - True

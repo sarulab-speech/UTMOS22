@@ -40,7 +40,7 @@ class UTMOSLightningModule(pl.LightningModule):
         self.domain_table = {}
         data_sources = self.cfg.dataset.data_sources
         for idx, datasource in enumerate(data_sources):
-            if not self.cfg.dataset.use_data.lancers and datasource['name'] == 'lancers':
+            if not self.cfg.dataset.use_data.external and datasource['name'] == 'external':
                 data_sources.pop(idx)
         for idx, datasource in enumerate(data_sources):
             if not self.cfg.dataset.use_data.main and datasource['name'] == 'main':

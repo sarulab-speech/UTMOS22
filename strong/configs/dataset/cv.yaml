@@ -18,7 +18,7 @@ data_sources:
     data_dir: data/phase1-ood/DATA
     outfile: answer-ood.csv
   -
-    name: "lancers"
+    name: "external"
     train_mos_list_path: TRAINSET_xin.txt
     wav_dir: data/phase1-ood/DATA/wav/
     data_dir: data/phase1-ood/DATA
@@ -26,7 +26,7 @@ k_cv: 5
 use_data:
   main: True
   ood: True
-  lancers: True
+  external: True
 datamodule: 
   _target_: dataset.CVDataModule
 only_mean: False
