@@ -10,6 +10,11 @@ In the Challenge, our system had the highest score on several metrics for both t
 Demo for UTMOS is available: [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/sarulab-speech/UTMOS-demo)
 
 ## How to use
+First run the following command to exclude bad wav file from main track training set.
+The original data will be saved with `.bak` suffix.
+```shell
+python remove_silenceWav.py --path_to_dataset path-to-dataset/phase1-main/
+```
 
 Our system predicts MOS with small errors by stacking of strong and weak learners.  
 - To run training and inference with <u>a single strong learner</u>, see [strong/README.md](strong/README.md).  
