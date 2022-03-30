@@ -6,7 +6,7 @@ from pytorch_lightning import Trainer, seed_everything
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.callbacks import LearningRateMonitor
 from dataset import CVDataModule, TestDataModule
-from lightning_module import BaselineLightningModule
+from lightning_module import UTMOSLightningModule
 import hydra
 import wandb
 

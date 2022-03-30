@@ -28,6 +28,7 @@ hydra-core = "^1.1.1"
 hydra-optuna-sweeper = "^1.1.2"
 augment = {git = "https://github.com/facebookresearch/WavAugment.git", rev = "main"}
 fairseq = {git = "https://github.com/sarulab-speech/fairseq.git", rev = "main"}
+pandas = "^1.4.1"
 
 
 [tool.poetry.dev-dependencies]

@@ -1,4 +1,3 @@
-from platform import system
 from typing import Any, Dict, List
 import augment
 import torch

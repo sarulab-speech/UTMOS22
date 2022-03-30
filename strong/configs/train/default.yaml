@@ -1,5 +1,6 @@
 # @package _group_ 
 seed: 1234
+use_wandb: False
 model_selection_metric: val_SRCC_system_main
 train_batch_size: 12
 val_batch_size: 1

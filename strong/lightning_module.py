@@ -1,5 +1,3 @@
-from pickletools import optimize
-from black import out
 import pytorch_lightning as pl
 import torch
 import torch.nn as nn
@@ -14,7 +12,7 @@ from model import load_ssl_model, PhonemeEncoder, DomainEmbedding, LDConditioner
 import wandb
 
 
-class BaselineLightningModule(pl.LightningModule):
+class UTMOSLightningModule(pl.LightningModule):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
@@ -251,7 +249,7 @@ class BaselineLightningModule(pl.LightningModule):
 
 
 
-class DeepSpeedBaselineLightningModule(BaselineLightningModule):
+class DeepSpeedBaselineLightningModule(UTMOSLightningModule):
     def __init__(self, cfg):
         super().__init__(cfg)
 
