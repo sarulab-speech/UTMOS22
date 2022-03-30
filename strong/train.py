@@ -51,7 +51,7 @@ def train(cfg):
     )
 
     datamodule = hydra.utils.instantiate(cfg.dataset.datamodule,cfg=cfg,_recursive_=False)
-    test_datamodule = TestDataModule(cfg=cfg, i_cv=0, set_name='test_post')
+    test_datamodule = TestDataModule(cfg=cfg, i_cv=0, set_name='test')
     lightning_module = UTMOSLightningModule(cfg)    
     
     trainer.fit(lightning_module, datamodule=datamodule)

@@ -50,6 +50,7 @@ class DataModule(pl.LightningDataModule):
         self.mos_df = {}
         self.mos_df['train'] = self.get_mos_df(train_paths,domains_train,self.cfg.dataset.only_mean)
         self.mos_df['val'] = self.get_mos_df(val_paths,domains_val,only_mean=True,id_reference=self.mos_df['train'])
+        self.mos_df['train'].to_csv("listener_embedding_lookup.csv")
        
 
     def get_mos_df(self, paths:List[str], domains:List[str],only_mean=False,id_reference=None):
