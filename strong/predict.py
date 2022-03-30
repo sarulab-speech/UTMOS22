@@ -2,7 +2,7 @@ from pytorch_lightning import Trainer
 import hydra
 import os
 import pathlib
-from lightning_module import BaselineLightningModule
+from lightning_module import UTMOSLightningModule
 from dataset import TestDataModule, DataModule
 
 @hydra.main(config_path="configs",config_name='default')
@@ -22,7 +22,7 @@ def predict(cfg):
     if not ckpt_path.is_absolute():
         ckpt_path = (pathlib.Path(hydra.utils.get_original_cwd()) / ckpt_path)
 
-    lightning_module = BaselineLightningModule.load_from_checkpoint(ckpt_path)
+    lightning_module = UTMOSLightningModule.load_from_checkpoint(ckpt_path)
     print(lightning_module.cfg)
     datamodule = DataModule(lightning_module.cfg)
     test_datamodule = TestDataModule(cfg=lightning_module.cfg, i_cv=0, set_name='test')

@@ -5,7 +5,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from dataset import CVDataModule, TestDataModule
-from lightning_module import BaselineLightningModule
+from lightning_module import UTMOSLightningModule
 import hydra
 import wandb
 
@@ -25,28 +25,12 @@ def fit_and_test(cfg, k_cv, i_cv):
     if debug:
         cfg.train.trainer_args.max_steps=10
 
-    if cfg.batch_size_and_model == "wav2vec2-base-4":
-        cfg.model.feature_extractors[0]["cp_path"] = "fairseq/wav2vec_small.pt"
-        cfg.train.train_batch_size = 4
-    elif cfg.batch_size_and_model == "wav2vec2-base-8":
-        cfg.model.feature_extractors[0]["cp_path"] = "fairseq/wav2vec_small.pt"
-        cfg.train.train_batch_size = 8
-    elif cfg.batch_size_and_model == "wav2vec2-base-16":
-        cfg.model.feature_extractors[0]["cp_path"] = "fairseq/wav2vec_small.pt"
-        cfg.train.train_batch_size = 16
-    elif cfg.batch_size_and_model == "wav2vec2-base-32":
-        cfg.model.feature_extractors[0]["cp_path"] = "fairseq/wav2vec_small.pt"
-        cfg.train.train_batch_size = 32
-    elif cfg.batch_size_and_model == "wavlm-large-4":
-        cfg.model.feature_extractors[0]["cp_path"] = "fairseq/WavLM-Large.pt"
-        cfg.train.train_batch_size = 4
-    print(cfg.batch_size_and_model)
-    print(cfg.model.feature_extractors[0]["cp_path"])
-    print(cfg.train.train_batch_size)
 
-    csvlogger = CSVLogger(save_dir=cfg.train.out_dir, name="log_subset{}".format(i_cv))
-    tblogger = TensorBoardLogger(save_dir=cfg.train.out_dir, name="tf_log_subset{}".format(i_cv))
-    wandblogger = WandbLogger(name="{}_{}_{}".format(cfg.testname,i_cv,k_cv), project="voiceMOS2022-cross-validation-main",entity='sarulab-voicemos',settings=wandb.Settings(start_method="fork"))
+    loggers = []
+    loggers.append(CSVLogger(save_dir=cfg.train.out_dir, name="train_log"))
+    loggers.append(TensorBoardLogger(save_dir=cfg.train.out_dir, name="tf_log"))
+    if cfg.train.use_wandb:
+        loggers.append(WandbLogger(project="voicemos",offline=debug))
 
     checkpoint_callback = ModelCheckpoint(
         dirpath=cfg.train.out_dir,
@@ -69,19 +53,17 @@ def fit_and_test(cfg, k_cv, i_cv):
         limit_train_batches=0.01 if debug else 1.0,
         limit_val_batches=0.5 if debug else 1.0,
         callbacks=callbacks,
-        logger=[csvlogger, tblogger, wandblogger],
+        logger=loggers,
     )
 
     datamodule = CVDataModule(cfg=cfg, k_cv=k_cv, i_cv=i_cv)
     val_datamodule = TestDataModule(cfg=cfg, i_cv=i_cv, set_name='val')
     test_datamodule = TestDataModule(cfg=cfg, i_cv=i_cv, set_name='test')
-    lightning_module = hydra.utils.instantiate(cfg.model.lightning_module,cfg=cfg, _recursive_=False)
-        
+    lightning_module = UTMOSLightningModule(cfg)        
     trainer.fit(lightning_module, datamodule=datamodule)
 
     if debug:
         trainer.test(lightning_module, verbose=True, datamodule=datamodule)
-        print(trainer.logged_metrics.keys())
         result = trainer.logged_metrics["test_SRCC_SYS_main_i_cv_{}_set_name_{}".format(i_cv, "fold")]
         trainer.test(lightning_module, verbose=True, datamodule=val_datamodule)
         trainer.test(lightning_module, verbose=True, datamodule=test_datamodule)
