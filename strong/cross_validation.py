@@ -38,7 +38,7 @@ def fit_and_test(cfg, k_cv, i_cv):
         save_top_k=1,
         save_last=True,
         every_n_epochs=1,
-        monitor="val_SRCC_system_main",
+        monitor=cfg.train.model_selection_metric,
         mode='max'
     )
     callbacks = [checkpoint_callback]
