@@ -15,6 +15,7 @@ cd path/to/this/repository
 poetry install
 cd strong/
 ln -s path/to/dataset/ data/
+poetry shell
 ```
 
 ## Preprocessing
@@ -37,7 +38,7 @@ python train.py
 OOD track
 ```shell
 cd strong/
-python train.py train.model_selection_metric=val_SRCC_system_main
+python train.py train.model_selection_metric=val_SRCC_system_ood
 ```
 
 ## Prediction 
