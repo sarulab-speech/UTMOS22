@@ -21,7 +21,7 @@ data_sources:
     outfile: answer-ood.csv
   -
     name: "external"
-    train_mos_list_path: TRAINSET_xin.txt
+    train_mos_list_path: TRAINSET_external.txt
     wav_dir: data/phase1-ood/DATA/wav/
     data_dir: data/phase1-ood/DATA
 use_data:
