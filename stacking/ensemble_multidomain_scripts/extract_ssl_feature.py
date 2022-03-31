@@ -83,9 +83,13 @@ def extract_feature(datatrack, ssl_type):
 def main():
     args = get_arg()
 
-    ssl_types = ['wavlm_large', 'hubert_large', 'hubert_base', 'wavlm_base',
-                        'w2v_small', 'w2v_xlsr', 'w2v_large', 'w2v_large2']
-    datatracks = ['phase1-main', 'phase1-ood', 'tetsphase-main', 'testphase-ood']
+    ssl_types = [
+                    # 'w2v_large2', 'w2v_xlsr',  # does not work in current fairseq
+                    'wavlm_base', 'wavlm_large',
+                    'hubert_large', 'hubert_base',
+                    'w2v_small', 'w2v_large',
+                    ]
+    datatracks = ['phase1-ood', 'tetsphase-main', 'testphase-ood', 'phase1-main']
 
     for datatrack in datatracks:
         for ssl_type in ssl_types:
