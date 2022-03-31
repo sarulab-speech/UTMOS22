@@ -32,18 +32,13 @@ def write_wavnames(outpath, wavnames, mos_lookup):
 def main():
     args = get_arg()
 
-    datadir = Path('./data', args.datatrack, 'DATA')
-    # outdir = Path('./out/ensemble', args.datatrack + '-wo_test', 'fold')
-    outdir = Path('./out/ensemble-multidomain/fold', args.datatrack + '-wo_test')
+    datadir = Path('../data', args.datatrack, 'DATA')
+    outdir = Path('../out/ensemble-multidomain/fold', args.datatrack + '-wo_test')
 
     os.makedirs(outdir, exist_ok=True)
 
-    if args.datatrack == 'lancers':
-        moslist_files = ['./lancers_mos_list.txt']
-    elif args.datatrack == 'students':
-        moslist_files = ['./data/additional/student_mos_list.txt']
-    elif args.datatrack == 'students-ex':
-        moslist_files = ['./data/additional/student-ex_mos_list.txt']
+    if args.datatrack == 'external':
+        moslist_files = ['./external_mos_list.txt']
     else:
         moslist_files = [
             datadir / "sets/train_mos_list.txt",
@@ -51,10 +46,6 @@ def main():
         ]
     mos_lookup = {}
 
-    # wavnames = {
-    #     'train': [],
-    #     'val': [],
-    # }
     wavnames = []
 
     for mos_file in moslist_files:

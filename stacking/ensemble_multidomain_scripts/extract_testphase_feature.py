@@ -89,7 +89,7 @@ def extract_feature(datatrack, ssl_type):
 
     print(ssl_model)
 
-    out_dir = Path(f'./out/utt_data/{ssl_type}')
+    out_dir = Path(f'../out/utt_data/{ssl_type}')
     os.makedirs(out_dir, exist_ok=True)
 
     mos_data = get_mos_data(datatrack)
@@ -107,9 +107,9 @@ def main():
     args = get_arg()
 
     # extract_feature(args.datatrack, 'w2v_small')
-    # for ssl_type in ['wavlm_large', 'hubert_large', 'hubert_base', 'wavlm_base',
-    #                     'w2v_small', 'w2v_xlsr', 'w2v_large', 'w2v_large2']:
-    for ssl_type in ['wavlm_large', 'wavlm_base']:
+    for ssl_type in ['wavlm_large', 'hubert_large', 'hubert_base', 'wavlm_base',
+                        'w2v_small', 'w2v_xlsr', 'w2v_large', 'w2v_large2']:
+    # for ssl_type in ['wavlm_large', 'wavlm_base']:
         print('ssl_type: {}'.format(ssl_type))
         extract_feature(args.datatrack, ssl_type)
 
