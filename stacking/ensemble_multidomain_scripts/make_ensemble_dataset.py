@@ -30,9 +30,9 @@ def write_wavnames(outpath, wavnames, mos_lookup):
 def main():
     args = get_arg()
 
-    datadir = Path('./data', args.datatrack, 'DATA')
+    datadir = Path('../data', args.datatrack, 'DATA')
     # outdir = Path('./out/ensemble', args.datatrack, 'fold')
-    outdir = Path('./out/ensemble-multidomain/fold', args.datatrack)
+    outdir = Path('../out/ensemble-multidomain/fold', args.datatrack)
 
     os.makedirs(outdir, exist_ok=True)
 
