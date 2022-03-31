@@ -11,7 +11,7 @@ for ssl_type in $ssl_types; do
 for method in ridge linear_svr kernel_svr rf lightgbm exactgp; do
 for i_cv in 0 1 2 3 4; do
     echo "${method}, ${train_datatrack}, ${ssl_type}, ${i_cv}, ${pred_datatrack}"
-    poetry run python -u pred_stage1.py ${method} ${train_datatrack} ${ssl_type} ${i_cv} ${pred_datatrack}
+    python -u pred_stage1.py ${method} ${train_datatrack} ${ssl_type} ${i_cv} ${pred_datatrack}
 done
 done
 done

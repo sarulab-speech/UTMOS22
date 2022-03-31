@@ -2,10 +2,7 @@
 set -eu
 
 datatrack=phase1-main
-feat_type=main17-weak48s-indomain-opt
-
-# datatrack=phase1-ood
-# feat_type=ood6-weak48x-opt
+feat_type=main-strong1-weak48-opt
 
 poetry  run python -u collect_stage1_result.py ${datatrack} ${feat_type}
 
