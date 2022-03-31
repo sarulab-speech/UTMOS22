@@ -25,6 +25,7 @@ def get_arg():
     parser.add_argument('datatrack')
     parser.add_argument('ssl_type')
     parser.add_argument('i_cv', type=int)
+    parser.add_argument('--use_opt', action='store_true', default=False)
     return parser.parse_args()
 
 
@@ -50,10 +51,13 @@ def main():
     elif args.method == 'rf':
         model = RandomForest()
     else:
-        param_file = Path('../out/ensemble-multidomain/opt_hp_stage1') / args.datatrack / \
-                        f'{args.method}-{args.ssl_type}' / 'params.json'
-        params = json.load(open(param_file, 'rb'))
-        logger.info('Params: {}'.format(params))
+        if args.use_opt:
+            param_file = Path('../out/ensemble-multidomain/opt_hp_stage1') / args.datatrack / \
+                            f'{args.method}-{args.ssl_type}' / 'params.json'
+            params = json.load(open(param_file, 'rb'))
+            logger.info('Params: {}'.format(params))
+        else:
+            params = {}
 
         if args.method == 'ridge':
             model = Ridge(params=params)
