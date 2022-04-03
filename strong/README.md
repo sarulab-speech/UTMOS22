@@ -33,7 +33,7 @@ To train the strong learner, run the following commands for each of the tracks.
 Main track
 ```shell
 cd strong/
-python train.py 
+python train.py dataset.use_data.ood=False dataset.use_data.external=False
 ```
 OOD track
 ```shell
