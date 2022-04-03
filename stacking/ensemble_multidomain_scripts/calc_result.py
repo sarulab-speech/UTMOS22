@@ -1,4 +1,5 @@
 
+import os
 from pathlib import Path
 
 import itertools
@@ -208,7 +209,9 @@ def main():
         data.append(calc_stage_n_score(args.datatrack, 'stage3', model_type, args.feat_type))
 
     df = pd.DataFrame.from_dict(data)
-    df.to_csv(f'../out/ensemble-multidomain/result/{args.datatrack}-{args.feat_type}.csv')
+    result_dir = Path('../out/ensemble-multidomain/result')
+    os.makedirs(result_dir, exist_ok=True)
+    df.to_csv(result_dir / f'{args.datatrack}-{args.feat_type}.csv')
 
 
 
