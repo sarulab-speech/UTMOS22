@@ -1,12 +1,52 @@
-# Usage
+# Stacking of strong and weak learners
 
-## Training
-1. ./opt_stage1_all.sh  # Optimize hyper parameters for stage 1
-1. ./run_stage1_all.sh  # Run GPR training using GPU
-1. ./run_stage1_other.sh  # Run training of weak learners except GPR
-1. ./run_stage2-end_opt.sh  # Run stage 2 & 3 training with hyperparameter optimization and calc training results
+## Data split
+Firstly link `data` to `../data`.
+Then run the following commands.
+```shell
+python make_ensemble_dataset.py --datatrack phase1-main
+python make_ensemble_dataset.py --datatrack phase1-ood
+python make_ensemble_dataset_wotest.py --datatrack external
+python make_ensemble_testphase.py --datatrack testphase-main
+python make_ensemble_testphase.py --datatrack testphase-odd
+```
 
-## Prediction
-1. ./pred_testphase_stage1_all.sh # Predict stage 1 outputs
-1. ./pred_testphase_stage2-end.sh # Predict stage 2 & 3 outputs
+## Feature extraction with SSL model
+Place the ckpt file of the pretrained model to `../pretrained_model`.  
+Then run the following command.
+```shell
+python extract_feature.py
+```
 
+## Converting results of strong learners for stacking
+Place the respective result files to `../strong_learner_result/main1` and `../strong_learner_result/ood1`.
+Then run the following commands.
+```
+python convert_strong_learner_result.py phase1-main main1
+python convert_strong_learner_result.py phase1-ood ood1
+python convert_strong_learner_testphase_result.py testphase-main main1
+python convert_strong_learner_testphase_result.py testphase-ood ood1
+```
+
+## Stage1
+For both main and OOD tracks, run the following command to perform stage1.
+```shell
+./run_stage1.sh
+```
+
+## Stage2 and 3 for Main track
+Run the following commands.
+```
+./run_stage2-3_main.sh # Run stage 2 and 3
+./pred_testphase_stage1_main.sh # Predict stage 1
+./pred_testphase_stage2-3_main.sh # Predict stage 2 and 3
+```
+
+## Stage 2 and 3 for OOD track
+Run the following commands.
+```
+./pred_stage1_ood.sh # Predict by cross-domain
+./run_stage2-3_ood.sh # Run stage 2 and 3
+./pred_testphase_stage1_ood.sh # Predict stage 1
+./pred_testphase_stage2-3_ood.sh # Predict stage 2 and 3
+```
