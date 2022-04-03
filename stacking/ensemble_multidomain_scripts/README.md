@@ -21,7 +21,7 @@ python extract_feature.py
 ## Converting results of strong learners for stacking
 Place the respective result files to `../strong_learner_result/main1` and `../strong_learner_result/ood1`.
 Then run the following commands.
-```
+```shell
 python convert_strong_learner_result.py phase1-main main1
 python convert_strong_learner_result.py phase1-ood ood1
 python convert_strong_learner_testphase_result.py testphase-main main1
@@ -36,7 +36,7 @@ For both main and OOD tracks, run the following command to perform stage1.
 
 ## Stage2 and 3 for Main track
 Run the following commands.
-```
+```shell
 ./run_stage2-3_main.sh # Run stage 2 and 3
 ./pred_testphase_stage1_main.sh # Predict stage 1
 ./pred_testphase_stage2-3_main.sh # Predict stage 2 and 3
@@ -44,7 +44,7 @@ Run the following commands.
 
 ## Stage 2 and 3 for OOD track
 Run the following commands.
-```
+```shell
 ./pred_stage1_ood.sh # Predict by cross-domain
 ./run_stage2-3_ood.sh # Run stage 2 and 3
 ./pred_testphase_stage1_ood.sh # Predict stage 1
