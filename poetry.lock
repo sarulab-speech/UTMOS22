@@ -550,6 +550,22 @@ requests-oauthlib = ">=0.7.0"
 tool = ["click (>=6.0.0)"]
 
 [[package]]
+name = "gpytorch"
+version = "1.6.0"
+description = "An implementation of Gaussian Processes in Pytorch"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+dev = ["black", "twine", "pre-commit"]
+docs = ["ipython", "ipykernel", "sphinx (<3.0.0)", "sphinx-rtd-theme", "nbsphinx", "m2r"]
+examples = ["ipython", "jupyter", "matplotlib", "scipy", "torchvision", "tqdm"]
+keops = ["pykeops (>=1.1.1)"]
+pyro = ["pyro-ppl (>=1.0.0)"]
+test = ["flake8 (==4.0.1)", "flake8-print (==4.0.0)", "pytest", "nbval"]
+
+[[package]]
 name = "greenlet"
 version = "1.1.2"
 description = "Lightweight in-process concurrent programming"
@@ -715,6 +731,22 @@ soundfile = ">=0.10.2"
 display = ["matplotlib (>=1.5)"]
 docs = ["numpydoc", "sphinx (!=1.3.1)", "sphinx-rtd-theme (>=0.5.0,<0.6.0)", "numba (<0.50)", "matplotlib (>=2.0.0,<3.3)", "sphinx-multiversion (>=0.2.3)", "sphinx-gallery (>=0.7)", "spinxcontrib-svg2pdfconverter", "presets"]
 tests = ["matplotlib (>=3.0)", "pytest-mpl", "pytest-cov", "pytest", "contextlib2", "samplerate", "soxr"]
+
+[[package]]
+name = "lightgbm"
+version = "3.3.2"
+description = "LightGBM Python Package"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+numpy = "*"
+scikit-learn = "!=0.22.0"
+scipy = "*"
+
+[package.extras]
+dask = ["dask[array] (>=2.0.0)", "dask[dataframe] (>=2.0.0)", "dask[distributed] (>=2.0.0)", "pandas"]
 
 [[package]]
 name = "llvmlite"
@@ -1850,7 +1882,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "b31905c1436d8536fb75a94b99b82a58562c204cee50532c91b631536a7a4d68"
+content-hash = "925aacbd161d2a7cfcb995642aed3d08031c6b5e1b6de01faafdd6a467920523"
 
 [metadata.files]
 absl-py = [
@@ -2287,6 +2319,9 @@ google-auth-oauthlib = [
     {file = "google-auth-oauthlib-0.4.6.tar.gz", hash = "sha256:a90a072f6993f2c327067bf65270046384cda5a8ecb20b94ea9a687f1f233a7a"},
     {file = "google_auth_oauthlib-0.4.6-py2.py3-none-any.whl", hash = "sha256:3f2a6e802eebbb6fb736a370fbf3b055edcb6b52878bf2f26330b5e041316c73"},
 ]
+gpytorch = [
+    {file = "gpytorch-1.6.0.tar.gz", hash = "sha256:08e8f1a80669dc3eee5ba237fc00c867a8858f9b186bbec8571a8cf9af36f543"},
+]
 greenlet = [
     {file = "greenlet-1.1.2-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:58df5c2a0e293bf665a51f8a100d3e9956febfbf1d9aaf8c0677cf70218910c6"},
     {file = "greenlet-1.1.2-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:aec52725173bd3a7b56fe91bc56eccb26fbdff1386ef123abb63c84c5b43b63a"},
@@ -2480,6 +2515,13 @@ kiwisolver = [
 librosa = [
     {file = "librosa-0.8.1-py3-none-any.whl", hash = "sha256:fd381e2d7067d4d4cf7691f2ef3620ef62a8aa6445dcf407e3328254692f742a"},
     {file = "librosa-0.8.1.tar.gz", hash = "sha256:c53d05e768ae4a3e553ae21c2e5015293e5efbfd5c12d497f1104cb519cca6b3"},
+]
+lightgbm = [
+    {file = "lightgbm-3.3.2-py3-none-macosx_10_14_x86_64.macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:2e94bd1b3ab29d173102c9c1d80db2e27ad7e43b8ff5a74c5cb7984b37d19f45"},
+    {file = "lightgbm-3.3.2-py3-none-manylinux1_x86_64.whl", hash = "sha256:f4cba3b4f29336ad7e801cb32d9b948ea4cc5300dda650b78bcdfe36b3e2c4b2"},
+    {file = "lightgbm-3.3.2-py3-none-manylinux2014_aarch64.whl", hash = "sha256:8e788c56853316fc5d35db726d81bd002c721038c856853952287f68082e0158"},
+    {file = "lightgbm-3.3.2-py3-none-win_amd64.whl", hash = "sha256:e4f1529cad416066964f9af0efad208787861e9f2181b7f9ee7fc9bacc082d4f"},
+    {file = "lightgbm-3.3.2.tar.gz", hash = "sha256:5d25d16e77c844c297ece2044df57651139bc3c8ad8c4108916374267ac68b64"},
 ]
 llvmlite = [
     {file = "llvmlite-0.34.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:11342e5ac320c953590bdd9d0dec8c52f4b5252c4c6335ba25f1e7b9f91f9325"},
