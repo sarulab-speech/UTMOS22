@@ -15,7 +15,7 @@ python make_ensemble_testphase.py --datatrack testphase-odd
 Place the ckpt file of the pretrained model to `../pretrained_model`.  
 Then run the following command.
 ```shell
-python extract_feature.py
+python extract_ssl_feature.py
 ```
 
 ## Converting results of strong learners for stacking

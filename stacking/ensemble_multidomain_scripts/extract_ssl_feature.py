@@ -69,7 +69,6 @@ def extract_feature(datatrack, ssl_type):
     out_dir = Path(f'../out/utt_data/{ssl_type}')
     os.makedirs(out_dir, exist_ok=True)
 
-
     wavpath_list = list(wav_dir.glob('*.wav'))
 
     for wavpath in tqdm(wavpath_list):
@@ -89,7 +88,7 @@ def main():
                     'hubert_large', 'hubert_base',
                     'w2v_small', 'w2v_large',
                     ]
-    datatracks = ['phase1-main', 'phase1-ood', 'tetsphase-main', 'testphase-ood']
+    datatracks = ['phase1-main', 'phase1-ood', 'testphase-main', 'testphase-ood']
 
     for datatrack in datatracks:
         for ssl_type in ssl_types:
