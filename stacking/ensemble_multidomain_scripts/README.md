@@ -7,8 +7,8 @@ Then run the following commands.
 python make_ensemble_dataset.py --datatrack phase1-main
 python make_ensemble_dataset.py --datatrack phase1-ood
 python make_ensemble_dataset_wotest.py --datatrack external
-python make_ensemble_testphase.py --datatrack testphase-main
-python make_ensemble_testphase.py --datatrack testphase-odd
+python make_ensemble_testphase.py --datatrack phase1-main
+python make_ensemble_testphase.py --datatrack phase1-odd
 ```
 
 ## Feature extraction with SSL model
