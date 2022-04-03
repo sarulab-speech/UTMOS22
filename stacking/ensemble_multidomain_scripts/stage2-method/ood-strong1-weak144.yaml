@@ -16,8 +16,8 @@ weak_learners:
   ssl_types:
     - w2v_small
     - w2v_large
-    # - w2v_large2
-    # - w2v_xlsr
+    - w2v_large2
+    - w2v_xlsr
     - hubert_base
     - hubert_large
     - wavlm_base

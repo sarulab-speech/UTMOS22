@@ -84,9 +84,9 @@ def main():
 
     ssl_types = [
                     'w2v_xlsr', 'w2v_large2',
-                    'wavlm_base', 'wavlm_large',
-                    'hubert_large', 'hubert_base',
-                    'w2v_small', 'w2v_large',
+                    # 'wavlm_base', 'wavlm_large',
+                    # 'hubert_large', 'hubert_base',
+                    # 'w2v_small', 'w2v_large',
                     ]
     datatracks = ['phase1-main', 'phase1-ood', 'testphase-main', 'testphase-ood']
 
