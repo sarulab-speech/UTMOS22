@@ -13,8 +13,9 @@ Demo for UTMOS is available: [![Hugging Face Spaces](https://img.shields.io/badg
 
 ### Enviornment setup
 
-1. This repo uses poetry as the python envoirnmet manager.Install poetry following [this instruction](https://python-poetry.org/docs/#installation) first.
-1. Second, download necessary fairseq checkpoint using [this script](fairseq_checkpoints/download_checkpoints.sh)
+1. This repo uses poetry as the python envoirnmet manager. Install poetry following [this instruction](https://python-poetry.org/docs/#installation) first.
+1. Install required python packages using `poetry install`. And enter the python enviornment with `poetry shell`. All following operations **requires** to be inside the poetry shell enviornment.
+1. Second, download necessary fairseq checkpoint using [download_strong_checkpoints.sh](fairseq_checkpoints/download_strong_checkpoints.sh) for strong and [download_stacking_checkpoints.sh](fairseq_checkpoints/download_stacking_checkpoints.sh) for stacking.
 1. Next, run the following command to exclude bad wav file from main track training set.
 The original data will be saved with `.bak` suffix.
 ```shell
