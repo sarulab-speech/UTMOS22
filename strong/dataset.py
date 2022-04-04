@@ -13,7 +13,6 @@ import pandas as pd
 from data_augment import ChainRunner, random_pitch_shift, random_time_warp
 import text.symbols as symbols
 import numpy as np
-import librosa
 from collections import defaultdict
 from torch.nn.utils.rnn import pad_sequence
 
