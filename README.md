@@ -26,3 +26,5 @@ python remove_silenceWav.py --path_to_dataset path-to-dataset/phase1-main/
 Our system predicts MOS with small errors by stacking of strong and weak learners.  
 - To run training and inference with <u>a single strong learner</u>, see [strong/README.md](strong/README.md).  
 - To run <u>stacking</u>, see [stacking/ensemble_multidomain_scripts/README.md](stacking/ensemble_multidomain_scripts/README.md).
+
+If you encounter any problems regarding running the code, feel free to submit an issue. The code is not fully tested.
