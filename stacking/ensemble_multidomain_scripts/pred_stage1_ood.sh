@@ -1,8 +1,8 @@
 
 set -eu
 
-# ssl_types="w2v_small w2v_large w2v_large2 w2v_xlsr wavlm_base wavlm_large hubert_base hubert_large"
-ssl_types="w2v_small w2v_large wavlm_base wavlm_large hubert_base hubert_large"
+ssl_types="w2v_small w2v_large w2v_large2 w2v_xlsr wavlm_base wavlm_large hubert_base hubert_large"
+#ssl_types="w2v_small w2v_large wavlm_base wavlm_large hubert_base hubert_large"
 
 # for ood
 for train_datatrack in external-wo_test phase1-main; do
