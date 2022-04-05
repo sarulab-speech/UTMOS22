@@ -375,7 +375,7 @@ six = ">=1.4.0"
 
 [[package]]
 name = "fairseq"
-version = "1.0.0a0+a986686"
+version = "1.0.0a0+9028a19"
 description = "Facebook AI Research Sequence-to-Sequence Toolkit"
 category = "main"
 optional = false
@@ -398,8 +398,8 @@ tqdm = "*"
 [package.source]
 type = "git"
 url = "https://github.com/sarulab-speech/fairseq.git"
-reference = "main"
-resolved_reference = "a986686e2183aee323b86509288ff2c756936ec9"
+reference = "for_utmos"
+resolved_reference = "9028a19131e3d8f4b27f4e13ece4cb0b678ff7ff"
 
 [[package]]
 name = "filelock"
@@ -1820,7 +1820,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "5435ce4a03f74fab20e97241fe9c2989d42e2d2088191ab35a441b0962008065"
+content-hash = "b5f6f15b71eb6754d7ccd71a84d5e660aa18b32ce7bdc44a6a46e336f78c0140"
 
 [metadata.files]
 absl-py = [
