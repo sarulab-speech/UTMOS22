@@ -82,7 +82,6 @@ class DataModule(pl.LightningDataModule):
                 domain_id.append(id_reference[id_reference['domain'] == row['domain']]['domain_id'].iloc[0])
             return_df['listener_id'] = listener_id
             return_df['domain_id'] = domain_id
-        return_df.to_csv('listener_lookup.csv',index=False)
         return return_df
 
     def get_ds(self, phase):

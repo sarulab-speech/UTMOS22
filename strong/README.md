@@ -46,3 +46,10 @@ To predict scores with the trained strong learner, run the following command.
 ```shell
 python predict.py +ckpt_path=outputs/${date}/${time}/train_outputs/hoge.ckpt
 ```
+To perform prdiction with the pretrained model, run the following command.
+
+```shell
+python predict.py +ckpt_path=outputs/${date}/${time}/train_outputs/hoge.ckpt +paper_weights=True
+```
+
+Link to the pretrained models will be available soon.
