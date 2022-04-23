@@ -7,6 +7,15 @@ Training and inference scripts for the UTMOS strong learner.
 * poetry
 * [WavAugment](https://github.com/facebookresearch/WavAugment)
 
+## Pretrained model
+Pretrained **UTMOS strong** models for the main and OOD tracks are available.  
+For the model details, refer to the [paper](https://arxiv.org/abs/2204.02152).
+
+- [main track](https://drive.google.com/drive/folders/1U4XQze8mJqV4TRMwTcY6T247RpmU5hRg?usp=sharing)
+- [OOD track](https://drive.google.com/drive/folders/1dPlV92fyKY1arei7TcU2ZFB-wZkYhIqK?usp=sharing)
+
+Note that we prepare pretrained models obtained with five different random seeds for each track. 
+
 ## Setup
 1. Download SSL model checkpoints from [fairseq repo](https://github.com/pytorch/fairseq).
 1. Run the following commands.
@@ -51,5 +60,3 @@ To perform prdiction with the pretrained model, run the following command.
 ```shell
 python predict.py +ckpt_path=outputs/${date}/${time}/train_outputs/hoge.ckpt +paper_weights=True
 ```
-
-Link to the pretrained models will be available soon.
