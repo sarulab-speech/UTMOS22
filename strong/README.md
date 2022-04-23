@@ -11,10 +11,10 @@ Training and inference scripts for the UTMOS strong learner.
 Pretrained **UTMOS strong** models for the main and OOD tracks are available.  
 For the model details, refer to the [paper](https://arxiv.org/abs/2204.02152).
 
-- [main track](https://drive.google.com/drive/folders/1U4XQze8mJqV4TRMwTcY6T247RpmU5hRg?usp=sharing)
-- [OOD track](https://drive.google.com/drive/folders/1dPlV92fyKY1arei7TcU2ZFB-wZkYhIqK?usp=sharing)
+- [Main](https://drive.google.com/drive/folders/1U4XQze8mJqV4TRMwTcY6T247RpmU5hRg?usp=sharing)
+- [OOD](https://drive.google.com/drive/folders/1dPlV92fyKY1arei7TcU2ZFB-wZkYhIqK?usp=sharing)
 
-Note that we prepare pretrained models obtained with five different random seeds for each track. 
+Note that each of the above directory contains pretrained models obtained with five different random seeds.
 
 ## Setup
 1. Download SSL model checkpoints from [fairseq repo](https://github.com/pytorch/fairseq).
