@@ -32,12 +32,17 @@ def main():
 
     assert args.datatrack in ['phase1-main', 'phase1-ood']
 
+    if args.datatrack == 'phase1-main':
+        pred_datatrack = 'testphase-main'
+    elif args.datatrack == 'phase1-ood':
+        pred_datatrack = 'testphase-ood'
+
     datadir = Path('../data', args.datatrack, 'DATA')
-    outdir = Path('../out/ensemble-multidomain/fold', args.datatrack)
+    outdir = Path('../out/ensemble-multidomain/fold', pred_datatrack)
 
     os.makedirs(outdir, exist_ok=True)
 
-    moslist_file = datadir / "sets/test.scp"
+    moslist_file = datadir / "sets/test_mos_list.txt"
     mos_lookup = {}
 
     wavnames = []
