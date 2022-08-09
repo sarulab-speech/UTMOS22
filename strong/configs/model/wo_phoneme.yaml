@@ -6,7 +6,7 @@ WavLM: False
 feature_extractors:
   -
     _target_: model.load_ssl_model
-    cp_path: fairseq/wav2vec_small.pt
+    cp_path: ../fairseq_checkpoints/fairseq/wav2vec_small.pt
 
   -
     _target_: model.DomainEmbedding

@@ -30,7 +30,7 @@ def write_wavnames(outpath, wavnames, mos_lookup):
 def main():
     args = get_arg()
 
-    assert args.datatrack in ['testphase-main', 'testphase-ood']
+    assert args.datatrack in ['phase1-main', 'phase1-ood']
 
     datadir = Path('../data', args.datatrack, 'DATA')
     outdir = Path('../out/ensemble-multidomain/fold', args.datatrack)

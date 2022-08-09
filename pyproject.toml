@@ -12,25 +12,24 @@ authors = [
 [tool.poetry.dependencies]
 python = "^3.8"
 transformers = "^4.15.0"
-torch = "^1.10.1"
+torch = "1.11"
 datasets = "^1.17.0"
 matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
 scikit-learn = "^1.0.2"
-torchaudio = "^0.10.1"
 pytorch-lightning = "^1.5.8"
 phonemizer = "^3.0.1"
 SoundFile = "^0.10.3"
-librosa = "^0.8.1"
 python-Levenshtein = "^0.12.2"
 wandb = "^0.12.10"
 hydra-core = "^1.1.1"
 hydra-optuna-sweeper = "^1.1.2"
 augment = {git = "https://github.com/facebookresearch/WavAugment.git", rev = "main"}
-fairseq = {git = "https://github.com/sarulab-speech/fairseq.git", rev = "main"}
+fairseq = {git = "https://github.com/sarulab-speech/fairseq.git", rev = "for_utmos"}
 pandas = "^1.4.1"
 gpytorch = "^1.6.0"
 lightgbm = "^3.3.2"
+gdown = "^4.4.0"
 
 
 [tool.poetry.dev-dependencies]

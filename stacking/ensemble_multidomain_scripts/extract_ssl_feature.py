@@ -37,14 +37,14 @@ def extract_feature(datatrack, ssl_type):
     wav_dir = Path(f'../data/{datatrack}/DATA/wav/')
 
     base_ckpt_file = {
-        'w2v_small': '../pretrained_model_ckpt/wav2vec_small.pt',
-        'w2v_xlsr': '../pretrained_model_ckpt/xlsr_53_56k.pt',
-        'w2v_large': '../pretrained_model_ckpt/wav2vec_vox_new.pt',
-        'w2v_large2': '../pretrained_model_ckpt/w2v_large_lv_fsh_swbd_cv.pt',
-        'wavlm_base': '../pretrained_model_ckpt/WavLM-Base.pt',
-        'wavlm_large': '../pretrained_model_ckpt/WavLM-Large.pt',
-        'hubert_base': '../pretrained_model_ckpt/hubert_base_ls960.pt',
-        'hubert_large': '../pretrained_model_ckpt/hubert_large_ll60k.pt',
+        'w2v_small':    '../../fairseq_checkpoints/wav2vec_small.pt',
+        'w2v_xlsr':     '../../fairseq_checkpoints/xlsr_53_56k.pt',
+        'w2v_large':    '../../fairseq_checkpoints/wav2vec_vox_new.pt',
+        'w2v_large2':   '../../fairseq_checkpoints/w2v_large_lv_fsh_swbd_cv.pt',
+        'wavlm_base':   '../../fairseq_checkpoints/WavLM-Base.pt',
+        'wavlm_large':  '../../fairseq_checkpoints/WavLM-Large.pt',
+        'hubert_base':  '../../fairseq_checkpoints/hubert_base_ls960.pt',
+        'hubert_large': '../../fairseq_checkpoints/hubert_large_ll60k.pt',
     }[ssl_type]
 
     print('base_ckpt_file: {}'.format(base_ckpt_file))
@@ -83,10 +83,10 @@ def main():
     args = get_arg()
 
     ssl_types = [
-                    'w2v_xlsr', 'w2v_large2',
-                    # 'wavlm_base', 'wavlm_large',
-                    # 'hubert_large', 'hubert_base',
-                    # 'w2v_small', 'w2v_large',
+                    'w2v_large2', 'w2v_xlsr',
+                    'wavlm_base', 'wavlm_large',
+                    'hubert_large', 'hubert_base',
+                    'w2v_small', 'w2v_large',
                     ]
     datatracks = ['phase1-main', 'phase1-ood', 'testphase-main', 'testphase-ood']
 
@@ -95,7 +95,6 @@ def main():
             print('datatrack {}, ssl_type: {}'.format(
                 datatrack, ssl_type))
             extract_feature(datatrack, ssl_type)
-
 
 
 if __name__ == '__main__':

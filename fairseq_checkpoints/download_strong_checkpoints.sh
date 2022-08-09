@@ -1,0 +1,1 @@
+wget https://dl.fbaipublicfiles.com/fairseq/wav2vec/wav2vec_small.pt -O wav2vec_small.pt

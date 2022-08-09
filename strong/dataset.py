@@ -13,7 +13,6 @@ import pandas as pd
 from data_augment import ChainRunner, random_pitch_shift, random_time_warp
 import text.symbols as symbols
 import numpy as np
-import librosa
 from collections import defaultdict
 from torch.nn.utils.rnn import pad_sequence
 
@@ -83,7 +82,6 @@ class DataModule(pl.LightningDataModule):
                 domain_id.append(id_reference[id_reference['domain'] == row['domain']]['domain_id'].iloc[0])
             return_df['listener_id'] = listener_id
             return_df['domain_id'] = domain_id
-        return_df.to_csv('listener_lookup.csv',index=False)
         return return_df
 
     def get_ds(self, phase):
