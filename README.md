@@ -16,6 +16,7 @@ Git clone the Hugging Face repo:
 ```
 git clone https://huggingface.co/spaces/sarulab-speech/UTMOS-demo
 cd UTMOS-demo
+pip install -r requirements.txt
 ```
 
 To predict the MOS of a single wav file:
