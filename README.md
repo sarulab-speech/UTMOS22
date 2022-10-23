@@ -10,7 +10,7 @@ In the Challenge, our system had the highest score on several metrics for both t
 Demo for UTMOS is available: [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/sarulab-speech/UTMOS-demo)
 
 ## Quick Prediction
-You can simply use a pretrained UTMOS strong leaner. We support both single and batch processings in a [NISQA](https://github.com/gabrielmittag/NISQA)-like interface.
+You can simply use a pretrained UTMOS strong leaner trained on the VoiceMOS Challenge 2022 Main Track Dataset. We support both single and batch processings in a [NISQA](https://github.com/gabrielmittag/NISQA)-like interface.
 
 Git clone the Hugging Face repo:
 ```
