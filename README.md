@@ -15,6 +15,7 @@ You can simply use a pretrained UTMOS strong leaner. We support both single and 
 Git clone the Hugging Face repo:
 ```
 git clone https://huggingface.co/spaces/sarulab-speech/UTMOS-demo
+cd UTMOS-demo
 ```
 
 To predict the MOS of a single wav file:
