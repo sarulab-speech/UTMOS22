@@ -83,7 +83,7 @@ def main():
     args = get_arg()
 
     ssl_types = [
-                    'w2v_large2', 'w2v_xlsr',  # does not work in current fairseq
+                    'w2v_large2', 'w2v_xlsr',
                     'wavlm_base', 'wavlm_large',
                     'hubert_large', 'hubert_base',
                     'w2v_small', 'w2v_large',
@@ -95,7 +95,6 @@ def main():
             print('datatrack {}, ssl_type: {}'.format(
                 datatrack, ssl_type))
             extract_feature(datatrack, ssl_type)
-
 
 
 if __name__ == '__main__':
