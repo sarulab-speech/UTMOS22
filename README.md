@@ -30,6 +30,8 @@ To predict the MOS of all .wav files in a folder use:
 python predict.py --mode predict_dir --inp_dir /path/to/wav/dir/ --bs <batchsize> --out_path /path/to/csv/file.csv
 ```
 
+You can also use the [pip package](https://github.com/ttseval/utmos).
+
 ## How to use the whole functionality
 
 ### Enviornment setup
